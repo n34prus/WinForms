@@ -28,7 +28,7 @@ namespace HomeLightGUI
         public static UInt16 counter1 = 0;
         public static UInt16 counter2 = 0;
         public static bool firstTime = true;
-
+        public static bool blink = true;
     }
 
     public static class UART    //работа с COM-портом
