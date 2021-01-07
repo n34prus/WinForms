@@ -97,4 +97,20 @@ namespace HomeLightGUI
             return summ;
         }
     }
+    public static class TIME    //работа с временем и будильником
+    {
+        public static byte[] bufferSysTime = new byte[8];          //буфер s-m-h d-m-y-wd
+        public static string[] daysOfWeek = { "ВС", "ПН","ВТ","СР","ЧТ","ПТ","СБ" };          //буфер s-m-h d-m-y-wd
+        public static void updateSysTimeBuffer()
+        {
+            bufferSysTime[0] = (byte)DateTime.Now.Second;
+            bufferSysTime[1] = (byte)DateTime.Now.Minute;
+            bufferSysTime[2] = (byte)DateTime.Now.Hour;
+            bufferSysTime[3] = (byte)DateTime.Now.Day;
+            bufferSysTime[4] = (byte)DateTime.Now.Month;
+            bufferSysTime[5] = (byte)(DateTime.Now.Year - 2000);
+            bufferSysTime[6] = (byte)DateTime.Now.DayOfWeek;
+        }
+
+    }
 }

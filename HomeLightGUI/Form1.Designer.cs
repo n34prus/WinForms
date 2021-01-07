@@ -34,8 +34,35 @@ namespace HomeLightGUI
             this.tabControl = new System.Windows.Forms.TabControl();
             this.tabColour = new System.Windows.Forms.TabPage();
             this.splitContainerColour = new System.Windows.Forms.SplitContainer();
+            this.tableLayoutPanelRawColour = new System.Windows.Forms.TableLayoutPanel();
+            this.labelSpeed = new System.Windows.Forms.Label();
+            this.textBoxBlue = new System.Windows.Forms.TextBox();
+            this.labelBlue = new System.Windows.Forms.Label();
+            this.textBoxGreen = new System.Windows.Forms.TextBox();
+            this.labelGreen = new System.Windows.Forms.Label();
+            this.trackBarRed = new System.Windows.Forms.TrackBar();
+            this.trackBarGreen = new System.Windows.Forms.TrackBar();
+            this.trackBarBlue = new System.Windows.Forms.TrackBar();
+            this.labelRed = new System.Windows.Forms.Label();
+            this.textBoxRed = new System.Windows.Forms.TextBox();
+            this.trackBarWhite = new System.Windows.Forms.TrackBar();
+            this.labelWhite = new System.Windows.Forms.Label();
+            this.textBoxWhite = new System.Windows.Forms.TextBox();
+            this.labelBlack = new System.Windows.Forms.Label();
+            this.textBoxBlack = new System.Windows.Forms.TextBox();
+            this.trackBarBlack = new System.Windows.Forms.TrackBar();
+            this.textBoxSpeed = new System.Windows.Forms.TextBox();
+            this.trackBarSpeed = new System.Windows.Forms.TrackBar();
             this.tabClock = new System.Windows.Forms.TabPage();
-            this.splitContainer1 = new System.Windows.Forms.SplitContainer();
+            this.tableLayoutPanel4 = new System.Windows.Forms.TableLayoutPanel();
+            this.tableLayoutPanel5 = new System.Windows.Forms.TableLayoutPanel();
+            this.buttonSyncTime = new System.Windows.Forms.Button();
+            this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.labelSystemDate = new System.Windows.Forms.Label();
+            this.labelSystemTime = new System.Windows.Forms.Label();
+            this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.labelModuleTime = new System.Windows.Forms.Label();
+            this.labelModuleDate = new System.Windows.Forms.Label();
             this.tabDeveloper = new System.Windows.Forms.TabPage();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.tableLayoutPanel3 = new System.Windows.Forms.TableLayoutPanel();
@@ -78,37 +105,12 @@ namespace HomeLightGUI
             this.buttonSend = new System.Windows.Forms.Button();
             this.textBoxData0tx = new System.Windows.Forms.TextBox();
             this.labelDebug = new System.Windows.Forms.Label();
-            this.tableLayoutPanelRawColour = new System.Windows.Forms.TableLayoutPanel();
-            this.labelSpeed = new System.Windows.Forms.Label();
-            this.textBoxBlue = new System.Windows.Forms.TextBox();
-            this.labelBlue = new System.Windows.Forms.Label();
-            this.textBoxGreen = new System.Windows.Forms.TextBox();
-            this.labelGreen = new System.Windows.Forms.Label();
-            this.trackBarRed = new System.Windows.Forms.TrackBar();
-            this.trackBarGreen = new System.Windows.Forms.TrackBar();
-            this.trackBarBlue = new System.Windows.Forms.TrackBar();
-            this.labelRed = new System.Windows.Forms.Label();
-            this.textBoxRed = new System.Windows.Forms.TextBox();
-            this.trackBarWhite = new System.Windows.Forms.TrackBar();
-            this.labelWhite = new System.Windows.Forms.Label();
-            this.textBoxWhite = new System.Windows.Forms.TextBox();
-            this.labelBlack = new System.Windows.Forms.Label();
-            this.textBoxBlack = new System.Windows.Forms.TextBox();
-            this.trackBarBlack = new System.Windows.Forms.TrackBar();
-            this.textBoxSpeed = new System.Windows.Forms.TextBox();
-            this.trackBarSpeed = new System.Windows.Forms.TrackBar();
+            this.ClockTimer = new System.Windows.Forms.Timer(this.components);
             this.tabControl.SuspendLayout();
             this.tabColour.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainerColour)).BeginInit();
             this.splitContainerColour.Panel1.SuspendLayout();
             this.splitContainerColour.SuspendLayout();
-            this.tabClock.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
-            this.splitContainer1.SuspendLayout();
-            this.tabDeveloper.SuspendLayout();
-            this.tableLayoutPanel1.SuspendLayout();
-            this.tableLayoutPanel3.SuspendLayout();
-            this.tableLayoutPanel2.SuspendLayout();
             this.tableLayoutPanelRawColour.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.trackBarRed)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.trackBarGreen)).BeginInit();
@@ -116,6 +118,15 @@ namespace HomeLightGUI
             ((System.ComponentModel.ISupportInitialize)(this.trackBarWhite)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.trackBarBlack)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.trackBarSpeed)).BeginInit();
+            this.tabClock.SuspendLayout();
+            this.tableLayoutPanel4.SuspendLayout();
+            this.tableLayoutPanel5.SuspendLayout();
+            this.groupBox1.SuspendLayout();
+            this.groupBox2.SuspendLayout();
+            this.tabDeveloper.SuspendLayout();
+            this.tableLayoutPanel1.SuspendLayout();
+            this.tableLayoutPanel3.SuspendLayout();
+            this.tableLayoutPanel2.SuspendLayout();
             this.SuspendLayout();
             // 
             // UpdateTimer
@@ -132,7 +143,7 @@ namespace HomeLightGUI
             this.tabControl.Location = new System.Drawing.Point(0, 0);
             this.tabControl.Name = "tabControl";
             this.tabControl.SelectedIndex = 0;
-            this.tabControl.Size = new System.Drawing.Size(872, 419);
+            this.tabControl.Size = new System.Drawing.Size(923, 457);
             this.tabControl.TabIndex = 0;
             // 
             // tabColour
@@ -141,7 +152,7 @@ namespace HomeLightGUI
             this.tabColour.Location = new System.Drawing.Point(4, 22);
             this.tabColour.Name = "tabColour";
             this.tabColour.Padding = new System.Windows.Forms.Padding(3);
-            this.tabColour.Size = new System.Drawing.Size(864, 393);
+            this.tabColour.Size = new System.Drawing.Size(915, 431);
             this.tabColour.TabIndex = 0;
             this.tabColour.Text = "Цвет";
             this.tabColour.UseVisualStyleBackColor = true;
@@ -156,29 +167,399 @@ namespace HomeLightGUI
             // splitContainerColour.Panel1
             // 
             this.splitContainerColour.Panel1.Controls.Add(this.tableLayoutPanelRawColour);
-            this.splitContainerColour.Size = new System.Drawing.Size(858, 387);
-            this.splitContainerColour.SplitterDistance = 264;
+            this.splitContainerColour.Size = new System.Drawing.Size(909, 425);
+            this.splitContainerColour.SplitterDistance = 289;
             this.splitContainerColour.TabIndex = 5;
+            // 
+            // tableLayoutPanelRawColour
+            // 
+            this.tableLayoutPanelRawColour.ColumnCount = 3;
+            this.tableLayoutPanelRawColour.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 15F));
+            this.tableLayoutPanelRawColour.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 15F));
+            this.tableLayoutPanelRawColour.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 70F));
+            this.tableLayoutPanelRawColour.Controls.Add(this.labelSpeed, 0, 5);
+            this.tableLayoutPanelRawColour.Controls.Add(this.textBoxBlue, 1, 2);
+            this.tableLayoutPanelRawColour.Controls.Add(this.labelBlue, 0, 2);
+            this.tableLayoutPanelRawColour.Controls.Add(this.textBoxGreen, 1, 1);
+            this.tableLayoutPanelRawColour.Controls.Add(this.labelGreen, 0, 1);
+            this.tableLayoutPanelRawColour.Controls.Add(this.trackBarRed, 2, 0);
+            this.tableLayoutPanelRawColour.Controls.Add(this.trackBarGreen, 2, 1);
+            this.tableLayoutPanelRawColour.Controls.Add(this.trackBarBlue, 2, 2);
+            this.tableLayoutPanelRawColour.Controls.Add(this.labelRed, 0, 0);
+            this.tableLayoutPanelRawColour.Controls.Add(this.textBoxRed, 1, 0);
+            this.tableLayoutPanelRawColour.Controls.Add(this.trackBarWhite, 2, 3);
+            this.tableLayoutPanelRawColour.Controls.Add(this.labelWhite, 0, 3);
+            this.tableLayoutPanelRawColour.Controls.Add(this.textBoxWhite, 1, 3);
+            this.tableLayoutPanelRawColour.Controls.Add(this.labelBlack, 0, 4);
+            this.tableLayoutPanelRawColour.Controls.Add(this.textBoxBlack, 1, 4);
+            this.tableLayoutPanelRawColour.Controls.Add(this.trackBarBlack, 2, 4);
+            this.tableLayoutPanelRawColour.Controls.Add(this.textBoxSpeed, 1, 5);
+            this.tableLayoutPanelRawColour.Controls.Add(this.trackBarSpeed, 2, 5);
+            this.tableLayoutPanelRawColour.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tableLayoutPanelRawColour.Location = new System.Drawing.Point(0, 0);
+            this.tableLayoutPanelRawColour.Name = "tableLayoutPanelRawColour";
+            this.tableLayoutPanelRawColour.RowCount = 6;
+            this.tableLayoutPanelRawColour.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 16.66667F));
+            this.tableLayoutPanelRawColour.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 16.66667F));
+            this.tableLayoutPanelRawColour.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 16.66667F));
+            this.tableLayoutPanelRawColour.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 16.66667F));
+            this.tableLayoutPanelRawColour.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 16.66667F));
+            this.tableLayoutPanelRawColour.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 16.66667F));
+            this.tableLayoutPanelRawColour.Size = new System.Drawing.Size(909, 289);
+            this.tableLayoutPanelRawColour.TabIndex = 5;
+            // 
+            // labelSpeed
+            // 
+            this.labelSpeed.AutoSize = true;
+            this.labelSpeed.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.labelSpeed.Location = new System.Drawing.Point(3, 240);
+            this.labelSpeed.Name = "labelSpeed";
+            this.labelSpeed.Size = new System.Drawing.Size(130, 49);
+            this.labelSpeed.TabIndex = 16;
+            this.labelSpeed.Text = "Скорость";
+            this.labelSpeed.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // textBoxBlue
+            // 
+            this.textBoxBlue.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.textBoxBlue.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.textBoxBlue.Location = new System.Drawing.Point(139, 99);
+            this.textBoxBlue.MaxLength = 3;
+            this.textBoxBlue.Name = "textBoxBlue";
+            this.textBoxBlue.Size = new System.Drawing.Size(130, 29);
+            this.textBoxBlue.TabIndex = 9;
+            this.textBoxBlue.Text = "0";
+            this.textBoxBlue.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.textBoxBlue.TextChanged += new System.EventHandler(this.textBoxAny_TextChanged);
+            // 
+            // labelBlue
+            // 
+            this.labelBlue.AutoSize = true;
+            this.labelBlue.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.labelBlue.Location = new System.Drawing.Point(3, 96);
+            this.labelBlue.Name = "labelBlue";
+            this.labelBlue.Size = new System.Drawing.Size(130, 48);
+            this.labelBlue.TabIndex = 8;
+            this.labelBlue.Text = "Синий";
+            this.labelBlue.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // textBoxGreen
+            // 
+            this.textBoxGreen.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.textBoxGreen.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.textBoxGreen.Location = new System.Drawing.Point(139, 51);
+            this.textBoxGreen.MaxLength = 3;
+            this.textBoxGreen.Name = "textBoxGreen";
+            this.textBoxGreen.Size = new System.Drawing.Size(130, 29);
+            this.textBoxGreen.TabIndex = 7;
+            this.textBoxGreen.Text = "0";
+            this.textBoxGreen.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.textBoxGreen.TextChanged += new System.EventHandler(this.textBoxAny_TextChanged);
+            // 
+            // labelGreen
+            // 
+            this.labelGreen.AutoSize = true;
+            this.labelGreen.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.labelGreen.Location = new System.Drawing.Point(3, 48);
+            this.labelGreen.Name = "labelGreen";
+            this.labelGreen.Size = new System.Drawing.Size(130, 48);
+            this.labelGreen.TabIndex = 6;
+            this.labelGreen.Text = "Зеленый";
+            this.labelGreen.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // trackBarRed
+            // 
+            this.trackBarRed.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.trackBarRed.Location = new System.Drawing.Point(275, 3);
+            this.trackBarRed.Maximum = 51;
+            this.trackBarRed.Name = "trackBarRed";
+            this.trackBarRed.Size = new System.Drawing.Size(631, 42);
+            this.trackBarRed.SmallChange = 5;
+            this.trackBarRed.TabIndex = 0;
+            this.trackBarRed.TickStyle = System.Windows.Forms.TickStyle.Both;
+            this.trackBarRed.Scroll += new System.EventHandler(this.trackBarAny_Scroll);
+            // 
+            // trackBarGreen
+            // 
+            this.trackBarGreen.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.trackBarGreen.Location = new System.Drawing.Point(275, 51);
+            this.trackBarGreen.Maximum = 51;
+            this.trackBarGreen.Name = "trackBarGreen";
+            this.trackBarGreen.Size = new System.Drawing.Size(631, 42);
+            this.trackBarGreen.SmallChange = 5;
+            this.trackBarGreen.TabIndex = 2;
+            this.trackBarGreen.TickStyle = System.Windows.Forms.TickStyle.Both;
+            this.trackBarGreen.Scroll += new System.EventHandler(this.trackBarAny_Scroll);
+            // 
+            // trackBarBlue
+            // 
+            this.trackBarBlue.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.trackBarBlue.Location = new System.Drawing.Point(275, 99);
+            this.trackBarBlue.Maximum = 51;
+            this.trackBarBlue.Name = "trackBarBlue";
+            this.trackBarBlue.Size = new System.Drawing.Size(631, 42);
+            this.trackBarBlue.SmallChange = 5;
+            this.trackBarBlue.TabIndex = 3;
+            this.trackBarBlue.TickStyle = System.Windows.Forms.TickStyle.Both;
+            this.trackBarBlue.Scroll += new System.EventHandler(this.trackBarAny_Scroll);
+            // 
+            // labelRed
+            // 
+            this.labelRed.AutoSize = true;
+            this.labelRed.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.labelRed.Location = new System.Drawing.Point(3, 0);
+            this.labelRed.Name = "labelRed";
+            this.labelRed.Size = new System.Drawing.Size(130, 48);
+            this.labelRed.TabIndex = 4;
+            this.labelRed.Text = "Красный";
+            this.labelRed.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // textBoxRed
+            // 
+            this.textBoxRed.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.textBoxRed.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.textBoxRed.Location = new System.Drawing.Point(139, 3);
+            this.textBoxRed.MaxLength = 3;
+            this.textBoxRed.Name = "textBoxRed";
+            this.textBoxRed.Size = new System.Drawing.Size(130, 29);
+            this.textBoxRed.TabIndex = 5;
+            this.textBoxRed.Text = "0";
+            this.textBoxRed.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.textBoxRed.TextChanged += new System.EventHandler(this.textBoxAny_TextChanged);
+            // 
+            // trackBarWhite
+            // 
+            this.trackBarWhite.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.trackBarWhite.Location = new System.Drawing.Point(275, 147);
+            this.trackBarWhite.Maximum = 51;
+            this.trackBarWhite.Name = "trackBarWhite";
+            this.trackBarWhite.Size = new System.Drawing.Size(631, 42);
+            this.trackBarWhite.SmallChange = 5;
+            this.trackBarWhite.TabIndex = 12;
+            this.trackBarWhite.TickStyle = System.Windows.Forms.TickStyle.Both;
+            this.trackBarWhite.Scroll += new System.EventHandler(this.trackBarAny_Scroll);
+            // 
+            // labelWhite
+            // 
+            this.labelWhite.AutoSize = true;
+            this.labelWhite.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.labelWhite.Location = new System.Drawing.Point(3, 144);
+            this.labelWhite.Name = "labelWhite";
+            this.labelWhite.Size = new System.Drawing.Size(130, 48);
+            this.labelWhite.TabIndex = 10;
+            this.labelWhite.Text = "Белый";
+            this.labelWhite.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // textBoxWhite
+            // 
+            this.textBoxWhite.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.textBoxWhite.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.textBoxWhite.Location = new System.Drawing.Point(139, 147);
+            this.textBoxWhite.MaxLength = 3;
+            this.textBoxWhite.Name = "textBoxWhite";
+            this.textBoxWhite.Size = new System.Drawing.Size(130, 29);
+            this.textBoxWhite.TabIndex = 11;
+            this.textBoxWhite.Text = "0";
+            this.textBoxWhite.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.textBoxWhite.TextChanged += new System.EventHandler(this.textBoxAny_TextChanged);
+            // 
+            // labelBlack
+            // 
+            this.labelBlack.AutoSize = true;
+            this.labelBlack.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.labelBlack.Location = new System.Drawing.Point(3, 192);
+            this.labelBlack.Name = "labelBlack";
+            this.labelBlack.Size = new System.Drawing.Size(130, 48);
+            this.labelBlack.TabIndex = 13;
+            this.labelBlack.Text = "Черный";
+            this.labelBlack.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // textBoxBlack
+            // 
+            this.textBoxBlack.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.textBoxBlack.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.textBoxBlack.Location = new System.Drawing.Point(139, 195);
+            this.textBoxBlack.MaxLength = 3;
+            this.textBoxBlack.Name = "textBoxBlack";
+            this.textBoxBlack.Size = new System.Drawing.Size(130, 29);
+            this.textBoxBlack.TabIndex = 14;
+            this.textBoxBlack.Text = "0";
+            this.textBoxBlack.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.textBoxBlack.TextChanged += new System.EventHandler(this.textBoxAny_TextChanged);
+            // 
+            // trackBarBlack
+            // 
+            this.trackBarBlack.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.trackBarBlack.Location = new System.Drawing.Point(275, 195);
+            this.trackBarBlack.Maximum = 51;
+            this.trackBarBlack.Name = "trackBarBlack";
+            this.trackBarBlack.Size = new System.Drawing.Size(631, 42);
+            this.trackBarBlack.SmallChange = 5;
+            this.trackBarBlack.TabIndex = 15;
+            this.trackBarBlack.TickStyle = System.Windows.Forms.TickStyle.Both;
+            this.trackBarBlack.Scroll += new System.EventHandler(this.trackBarAny_Scroll);
+            // 
+            // textBoxSpeed
+            // 
+            this.textBoxSpeed.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.textBoxSpeed.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.textBoxSpeed.Location = new System.Drawing.Point(139, 243);
+            this.textBoxSpeed.MaxLength = 3;
+            this.textBoxSpeed.Name = "textBoxSpeed";
+            this.textBoxSpeed.Size = new System.Drawing.Size(130, 29);
+            this.textBoxSpeed.TabIndex = 17;
+            this.textBoxSpeed.Text = "0";
+            this.textBoxSpeed.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.textBoxSpeed.TextChanged += new System.EventHandler(this.textBoxAny_TextChanged);
+            // 
+            // trackBarSpeed
+            // 
+            this.trackBarSpeed.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.trackBarSpeed.Location = new System.Drawing.Point(275, 243);
+            this.trackBarSpeed.Maximum = 51;
+            this.trackBarSpeed.Name = "trackBarSpeed";
+            this.trackBarSpeed.Size = new System.Drawing.Size(631, 43);
+            this.trackBarSpeed.SmallChange = 5;
+            this.trackBarSpeed.TabIndex = 18;
+            this.trackBarSpeed.TickStyle = System.Windows.Forms.TickStyle.Both;
+            this.trackBarSpeed.Scroll += new System.EventHandler(this.trackBarAny_Scroll);
             // 
             // tabClock
             // 
-            this.tabClock.Controls.Add(this.splitContainer1);
+            this.tabClock.Controls.Add(this.tableLayoutPanel4);
             this.tabClock.Location = new System.Drawing.Point(4, 22);
             this.tabClock.Name = "tabClock";
             this.tabClock.Padding = new System.Windows.Forms.Padding(3);
-            this.tabClock.Size = new System.Drawing.Size(864, 393);
+            this.tabClock.Size = new System.Drawing.Size(915, 431);
             this.tabClock.TabIndex = 2;
             this.tabClock.Text = "Часы";
             this.tabClock.UseVisualStyleBackColor = true;
             // 
-            // splitContainer1
+            // tableLayoutPanel4
             // 
-            this.splitContainer1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.splitContainer1.Location = new System.Drawing.Point(3, 3);
-            this.splitContainer1.Name = "splitContainer1";
-            this.splitContainer1.Size = new System.Drawing.Size(858, 387);
-            this.splitContainer1.SplitterDistance = 493;
-            this.splitContainer1.TabIndex = 1;
+            this.tableLayoutPanel4.BackColor = System.Drawing.Color.Transparent;
+            this.tableLayoutPanel4.ColumnCount = 2;
+            this.tableLayoutPanel4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel4.Controls.Add(this.tableLayoutPanel5, 0, 0);
+            this.tableLayoutPanel4.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tableLayoutPanel4.Location = new System.Drawing.Point(3, 3);
+            this.tableLayoutPanel4.Name = "tableLayoutPanel4";
+            this.tableLayoutPanel4.RowCount = 1;
+            this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel4.Size = new System.Drawing.Size(909, 425);
+            this.tableLayoutPanel4.TabIndex = 2;
+            // 
+            // tableLayoutPanel5
+            // 
+            this.tableLayoutPanel5.ColumnCount = 1;
+            this.tableLayoutPanel5.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.tableLayoutPanel5.Controls.Add(this.buttonSyncTime, 0, 2);
+            this.tableLayoutPanel5.Controls.Add(this.groupBox1, 0, 0);
+            this.tableLayoutPanel5.Controls.Add(this.groupBox2, 0, 1);
+            this.tableLayoutPanel5.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tableLayoutPanel5.Location = new System.Drawing.Point(3, 3);
+            this.tableLayoutPanel5.Name = "tableLayoutPanel5";
+            this.tableLayoutPanel5.RowCount = 3;
+            this.tableLayoutPanel5.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 40F));
+            this.tableLayoutPanel5.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 40F));
+            this.tableLayoutPanel5.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 20F));
+            this.tableLayoutPanel5.Size = new System.Drawing.Size(448, 419);
+            this.tableLayoutPanel5.TabIndex = 7;
+            // 
+            // buttonSyncTime
+            // 
+            this.buttonSyncTime.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.buttonSyncTime.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.buttonSyncTime.Location = new System.Drawing.Point(3, 337);
+            this.buttonSyncTime.Name = "buttonSyncTime";
+            this.buttonSyncTime.Size = new System.Drawing.Size(442, 79);
+            this.buttonSyncTime.TabIndex = 0;
+            this.buttonSyncTime.Text = "Синхронизировать";
+            this.buttonSyncTime.UseVisualStyleBackColor = true;
+            this.buttonSyncTime.Click += new System.EventHandler(this.buttonSyncTime_Click);
+            // 
+            // groupBox1
+            // 
+            this.groupBox1.BackColor = System.Drawing.SystemColors.ControlDarkDark;
+            this.groupBox1.Controls.Add(this.labelSystemDate);
+            this.groupBox1.Controls.Add(this.labelSystemTime);
+            this.groupBox1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.groupBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.groupBox1.ForeColor = System.Drawing.SystemColors.Control;
+            this.groupBox1.Location = new System.Drawing.Point(3, 3);
+            this.groupBox1.Name = "groupBox1";
+            this.groupBox1.Size = new System.Drawing.Size(442, 161);
+            this.groupBox1.TabIndex = 5;
+            this.groupBox1.TabStop = false;
+            this.groupBox1.Text = "Время и дата системы";
+            // 
+            // labelSystemDate
+            // 
+            this.labelSystemDate.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.labelSystemDate.Font = new System.Drawing.Font("Courier New", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelSystemDate.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
+            this.labelSystemDate.Location = new System.Drawing.Point(-1, 122);
+            this.labelSystemDate.Name = "labelSystemDate";
+            this.labelSystemDate.Size = new System.Drawing.Size(437, 39);
+            this.labelSystemDate.TabIndex = 3;
+            this.labelSystemDate.Text = "*TEXT*";
+            this.labelSystemDate.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            // 
+            // labelSystemTime
+            // 
+            this.labelSystemTime.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.labelSystemTime.Font = new System.Drawing.Font("Courier New", 48F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.labelSystemTime.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
+            this.labelSystemTime.Location = new System.Drawing.Point(6, 22);
+            this.labelSystemTime.Name = "labelSystemTime";
+            this.labelSystemTime.Size = new System.Drawing.Size(430, 100);
+            this.labelSystemTime.TabIndex = 2;
+            this.labelSystemTime.Text = "*TEXT*";
+            this.labelSystemTime.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // groupBox2
+            // 
+            this.groupBox2.BackColor = System.Drawing.SystemColors.ControlDarkDark;
+            this.groupBox2.Controls.Add(this.labelModuleTime);
+            this.groupBox2.Controls.Add(this.labelModuleDate);
+            this.groupBox2.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.groupBox2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.groupBox2.ForeColor = System.Drawing.SystemColors.Control;
+            this.groupBox2.Location = new System.Drawing.Point(3, 170);
+            this.groupBox2.Name = "groupBox2";
+            this.groupBox2.Size = new System.Drawing.Size(442, 161);
+            this.groupBox2.TabIndex = 6;
+            this.groupBox2.TabStop = false;
+            this.groupBox2.Text = "Время и дата модуля";
+            // 
+            // labelModuleTime
+            // 
+            this.labelModuleTime.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.labelModuleTime.Font = new System.Drawing.Font("Courier New", 48F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.labelModuleTime.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(255)))));
+            this.labelModuleTime.Location = new System.Drawing.Point(6, 22);
+            this.labelModuleTime.Name = "labelModuleTime";
+            this.labelModuleTime.Size = new System.Drawing.Size(430, 100);
+            this.labelModuleTime.TabIndex = 5;
+            this.labelModuleTime.Text = "*TEXT*";
+            this.labelModuleTime.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // labelModuleDate
+            // 
+            this.labelModuleDate.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.labelModuleDate.Font = new System.Drawing.Font("Courier New", 20.25F, System.Drawing.FontStyle.Bold);
+            this.labelModuleDate.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(255)))));
+            this.labelModuleDate.Location = new System.Drawing.Point(-1, 122);
+            this.labelModuleDate.Name = "labelModuleDate";
+            this.labelModuleDate.Size = new System.Drawing.Size(437, 39);
+            this.labelModuleDate.TabIndex = 4;
+            this.labelModuleDate.Text = "*TEXT*";
+            this.labelModuleDate.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
             // tabDeveloper
             // 
@@ -186,7 +567,7 @@ namespace HomeLightGUI
             this.tabDeveloper.Location = new System.Drawing.Point(4, 22);
             this.tabDeveloper.Name = "tabDeveloper";
             this.tabDeveloper.Padding = new System.Windows.Forms.Padding(3);
-            this.tabDeveloper.Size = new System.Drawing.Size(864, 393);
+            this.tabDeveloper.Size = new System.Drawing.Size(915, 431);
             this.tabDeveloper.TabIndex = 1;
             this.tabDeveloper.Text = "Разработчик";
             this.tabDeveloper.UseVisualStyleBackColor = true;
@@ -210,7 +591,7 @@ namespace HomeLightGUI
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 10F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 40F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(858, 387);
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(909, 425);
             this.tableLayoutPanel1.TabIndex = 0;
             // 
             // tableLayoutPanel3
@@ -244,21 +625,21 @@ namespace HomeLightGUI
             this.tableLayoutPanel3.Controls.Add(this.labelValuerx, 0, 1);
             this.tableLayoutPanel3.Controls.Add(this.valueDATA0rx, 1, 1);
             this.tableLayoutPanel3.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel3.Location = new System.Drawing.Point(3, 221);
+            this.tableLayoutPanel3.Location = new System.Drawing.Point(3, 245);
             this.tableLayoutPanel3.Name = "tableLayoutPanel3";
             this.tableLayoutPanel3.RowCount = 2;
             this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel3.Size = new System.Drawing.Size(852, 140);
+            this.tableLayoutPanel3.Size = new System.Drawing.Size(903, 156);
             this.tableLayoutPanel3.TabIndex = 4;
             // 
             // valueDATA6rx
             // 
             this.valueDATA6rx.AutoSize = true;
             this.valueDATA6rx.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.valueDATA6rx.Location = new System.Drawing.Point(598, 70);
+            this.valueDATA6rx.Location = new System.Drawing.Point(633, 78);
             this.valueDATA6rx.Name = "valueDATA6rx";
-            this.valueDATA6rx.Size = new System.Drawing.Size(79, 70);
+            this.valueDATA6rx.Size = new System.Drawing.Size(84, 78);
             this.valueDATA6rx.TabIndex = 30;
             this.valueDATA6rx.Text = "-";
             this.valueDATA6rx.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -267,9 +648,9 @@ namespace HomeLightGUI
             // 
             this.valueDATA5rx.AutoSize = true;
             this.valueDATA5rx.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.valueDATA5rx.Location = new System.Drawing.Point(513, 70);
+            this.valueDATA5rx.Location = new System.Drawing.Point(543, 78);
             this.valueDATA5rx.Name = "valueDATA5rx";
-            this.valueDATA5rx.Size = new System.Drawing.Size(79, 70);
+            this.valueDATA5rx.Size = new System.Drawing.Size(84, 78);
             this.valueDATA5rx.TabIndex = 29;
             this.valueDATA5rx.Text = "-";
             this.valueDATA5rx.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -278,9 +659,9 @@ namespace HomeLightGUI
             // 
             this.valueDATA4rx.AutoSize = true;
             this.valueDATA4rx.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.valueDATA4rx.Location = new System.Drawing.Point(428, 70);
+            this.valueDATA4rx.Location = new System.Drawing.Point(453, 78);
             this.valueDATA4rx.Name = "valueDATA4rx";
-            this.valueDATA4rx.Size = new System.Drawing.Size(79, 70);
+            this.valueDATA4rx.Size = new System.Drawing.Size(84, 78);
             this.valueDATA4rx.TabIndex = 28;
             this.valueDATA4rx.Text = "-";
             this.valueDATA4rx.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -289,9 +670,9 @@ namespace HomeLightGUI
             // 
             this.valueDATA3rx.AutoSize = true;
             this.valueDATA3rx.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.valueDATA3rx.Location = new System.Drawing.Point(343, 70);
+            this.valueDATA3rx.Location = new System.Drawing.Point(363, 78);
             this.valueDATA3rx.Name = "valueDATA3rx";
-            this.valueDATA3rx.Size = new System.Drawing.Size(79, 70);
+            this.valueDATA3rx.Size = new System.Drawing.Size(84, 78);
             this.valueDATA3rx.TabIndex = 27;
             this.valueDATA3rx.Text = "-";
             this.valueDATA3rx.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -300,9 +681,9 @@ namespace HomeLightGUI
             // 
             this.valueDATA2rx.AutoSize = true;
             this.valueDATA2rx.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.valueDATA2rx.Location = new System.Drawing.Point(258, 70);
+            this.valueDATA2rx.Location = new System.Drawing.Point(273, 78);
             this.valueDATA2rx.Name = "valueDATA2rx";
-            this.valueDATA2rx.Size = new System.Drawing.Size(79, 70);
+            this.valueDATA2rx.Size = new System.Drawing.Size(84, 78);
             this.valueDATA2rx.TabIndex = 26;
             this.valueDATA2rx.Text = "-";
             this.valueDATA2rx.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -311,9 +692,9 @@ namespace HomeLightGUI
             // 
             this.valueDATA1rx.AutoSize = true;
             this.valueDATA1rx.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.valueDATA1rx.Location = new System.Drawing.Point(173, 70);
+            this.valueDATA1rx.Location = new System.Drawing.Point(183, 78);
             this.valueDATA1rx.Name = "valueDATA1rx";
-            this.valueDATA1rx.Size = new System.Drawing.Size(79, 70);
+            this.valueDATA1rx.Size = new System.Drawing.Size(84, 78);
             this.valueDATA1rx.TabIndex = 25;
             this.valueDATA1rx.Text = "-";
             this.valueDATA1rx.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -322,9 +703,9 @@ namespace HomeLightGUI
             // 
             this.valueDATA7rx.AutoSize = true;
             this.valueDATA7rx.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.valueDATA7rx.Location = new System.Drawing.Point(683, 70);
+            this.valueDATA7rx.Location = new System.Drawing.Point(723, 78);
             this.valueDATA7rx.Name = "valueDATA7rx";
-            this.valueDATA7rx.Size = new System.Drawing.Size(79, 70);
+            this.valueDATA7rx.Size = new System.Drawing.Size(84, 78);
             this.valueDATA7rx.TabIndex = 21;
             this.valueDATA7rx.Text = "-";
             this.valueDATA7rx.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -333,9 +714,9 @@ namespace HomeLightGUI
             // 
             this.labelDATA7rx.AutoSize = true;
             this.labelDATA7rx.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.labelDATA7rx.Location = new System.Drawing.Point(683, 0);
+            this.labelDATA7rx.Location = new System.Drawing.Point(723, 0);
             this.labelDATA7rx.Name = "labelDATA7rx";
-            this.labelDATA7rx.Size = new System.Drawing.Size(79, 70);
+            this.labelDATA7rx.Size = new System.Drawing.Size(84, 78);
             this.labelDATA7rx.TabIndex = 8;
             this.labelDATA7rx.Text = "DATA7 (CRC)";
             this.labelDATA7rx.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -344,9 +725,9 @@ namespace HomeLightGUI
             // 
             this.labelDATA6rx.AutoSize = true;
             this.labelDATA6rx.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.labelDATA6rx.Location = new System.Drawing.Point(598, 0);
+            this.labelDATA6rx.Location = new System.Drawing.Point(633, 0);
             this.labelDATA6rx.Name = "labelDATA6rx";
-            this.labelDATA6rx.Size = new System.Drawing.Size(79, 70);
+            this.labelDATA6rx.Size = new System.Drawing.Size(84, 78);
             this.labelDATA6rx.TabIndex = 7;
             this.labelDATA6rx.Text = "DATA6";
             this.labelDATA6rx.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -355,9 +736,9 @@ namespace HomeLightGUI
             // 
             this.labelDATA5rx.AutoSize = true;
             this.labelDATA5rx.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.labelDATA5rx.Location = new System.Drawing.Point(513, 0);
+            this.labelDATA5rx.Location = new System.Drawing.Point(543, 0);
             this.labelDATA5rx.Name = "labelDATA5rx";
-            this.labelDATA5rx.Size = new System.Drawing.Size(79, 70);
+            this.labelDATA5rx.Size = new System.Drawing.Size(84, 78);
             this.labelDATA5rx.TabIndex = 6;
             this.labelDATA5rx.Text = "DATA5";
             this.labelDATA5rx.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -366,9 +747,9 @@ namespace HomeLightGUI
             // 
             this.labelDATA4rx.AutoSize = true;
             this.labelDATA4rx.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.labelDATA4rx.Location = new System.Drawing.Point(428, 0);
+            this.labelDATA4rx.Location = new System.Drawing.Point(453, 0);
             this.labelDATA4rx.Name = "labelDATA4rx";
-            this.labelDATA4rx.Size = new System.Drawing.Size(79, 70);
+            this.labelDATA4rx.Size = new System.Drawing.Size(84, 78);
             this.labelDATA4rx.TabIndex = 5;
             this.labelDATA4rx.Text = "DATA4";
             this.labelDATA4rx.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -377,9 +758,9 @@ namespace HomeLightGUI
             // 
             this.label7labelDATA3rx.AutoSize = true;
             this.label7labelDATA3rx.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.label7labelDATA3rx.Location = new System.Drawing.Point(343, 0);
+            this.label7labelDATA3rx.Location = new System.Drawing.Point(363, 0);
             this.label7labelDATA3rx.Name = "label7labelDATA3rx";
-            this.label7labelDATA3rx.Size = new System.Drawing.Size(79, 70);
+            this.label7labelDATA3rx.Size = new System.Drawing.Size(84, 78);
             this.label7labelDATA3rx.TabIndex = 4;
             this.label7labelDATA3rx.Text = "DATA3";
             this.label7labelDATA3rx.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -388,9 +769,9 @@ namespace HomeLightGUI
             // 
             this.labelDATA2rx.AutoSize = true;
             this.labelDATA2rx.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.labelDATA2rx.Location = new System.Drawing.Point(258, 0);
+            this.labelDATA2rx.Location = new System.Drawing.Point(273, 0);
             this.labelDATA2rx.Name = "labelDATA2rx";
-            this.labelDATA2rx.Size = new System.Drawing.Size(79, 70);
+            this.labelDATA2rx.Size = new System.Drawing.Size(84, 78);
             this.labelDATA2rx.TabIndex = 3;
             this.labelDATA2rx.Text = "DATA2";
             this.labelDATA2rx.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -399,9 +780,9 @@ namespace HomeLightGUI
             // 
             this.labelDATA1rx.AutoSize = true;
             this.labelDATA1rx.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.labelDATA1rx.Location = new System.Drawing.Point(173, 0);
+            this.labelDATA1rx.Location = new System.Drawing.Point(183, 0);
             this.labelDATA1rx.Name = "labelDATA1rx";
-            this.labelDATA1rx.Size = new System.Drawing.Size(79, 70);
+            this.labelDATA1rx.Size = new System.Drawing.Size(84, 78);
             this.labelDATA1rx.TabIndex = 2;
             this.labelDATA1rx.Text = "DATA1";
             this.labelDATA1rx.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -410,9 +791,9 @@ namespace HomeLightGUI
             // 
             this.labelDATA0rx.AutoSize = true;
             this.labelDATA0rx.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.labelDATA0rx.Location = new System.Drawing.Point(88, 0);
+            this.labelDATA0rx.Location = new System.Drawing.Point(93, 0);
             this.labelDATA0rx.Name = "labelDATA0rx";
-            this.labelDATA0rx.Size = new System.Drawing.Size(79, 70);
+            this.labelDATA0rx.Size = new System.Drawing.Size(84, 78);
             this.labelDATA0rx.TabIndex = 1;
             this.labelDATA0rx.Text = "DATA0";
             this.labelDATA0rx.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -421,9 +802,9 @@ namespace HomeLightGUI
             // 
             this.labelValuerx.AutoSize = true;
             this.labelValuerx.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.labelValuerx.Location = new System.Drawing.Point(3, 70);
+            this.labelValuerx.Location = new System.Drawing.Point(3, 78);
             this.labelValuerx.Name = "labelValuerx";
-            this.labelValuerx.Size = new System.Drawing.Size(79, 70);
+            this.labelValuerx.Size = new System.Drawing.Size(84, 78);
             this.labelValuerx.TabIndex = 0;
             this.labelValuerx.Text = "Значение";
             this.labelValuerx.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -432,9 +813,9 @@ namespace HomeLightGUI
             // 
             this.valueDATA0rx.AutoSize = true;
             this.valueDATA0rx.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.valueDATA0rx.Location = new System.Drawing.Point(88, 70);
+            this.valueDATA0rx.Location = new System.Drawing.Point(93, 78);
             this.valueDATA0rx.Name = "valueDATA0rx";
-            this.valueDATA0rx.Size = new System.Drawing.Size(79, 70);
+            this.valueDATA0rx.Size = new System.Drawing.Size(84, 78);
             this.valueDATA0rx.TabIndex = 22;
             this.valueDATA0rx.Text = "-";
             this.valueDATA0rx.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -443,9 +824,9 @@ namespace HomeLightGUI
             // 
             this.label3.AutoSize = true;
             this.label3.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.label3.Location = new System.Drawing.Point(3, 182);
+            this.label3.Location = new System.Drawing.Point(3, 202);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(852, 36);
+            this.label3.Size = new System.Drawing.Size(903, 40);
             this.label3.TabIndex = 2;
             this.label3.Text = "Прием";
             this.label3.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -456,7 +837,7 @@ namespace HomeLightGUI
             this.labelSendForm.Dock = System.Windows.Forms.DockStyle.Fill;
             this.labelSendForm.Location = new System.Drawing.Point(3, 0);
             this.labelSendForm.Name = "labelSendForm";
-            this.labelSendForm.Size = new System.Drawing.Size(852, 36);
+            this.labelSendForm.Size = new System.Drawing.Size(903, 40);
             this.labelSendForm.TabIndex = 0;
             this.labelSendForm.Text = "Отправка";
             this.labelSendForm.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -493,21 +874,21 @@ namespace HomeLightGUI
             this.tableLayoutPanel2.Controls.Add(this.buttonSend, 9, 1);
             this.tableLayoutPanel2.Controls.Add(this.textBoxData0tx, 1, 1);
             this.tableLayoutPanel2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel2.Location = new System.Drawing.Point(3, 39);
+            this.tableLayoutPanel2.Location = new System.Drawing.Point(3, 43);
             this.tableLayoutPanel2.Name = "tableLayoutPanel2";
             this.tableLayoutPanel2.RowCount = 2;
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel2.Size = new System.Drawing.Size(852, 140);
+            this.tableLayoutPanel2.Size = new System.Drawing.Size(903, 156);
             this.tableLayoutPanel2.TabIndex = 3;
             // 
             // labelCRCValue
             // 
             this.labelCRCValue.AutoSize = true;
             this.labelCRCValue.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.labelCRCValue.Location = new System.Drawing.Point(683, 70);
+            this.labelCRCValue.Location = new System.Drawing.Point(723, 78);
             this.labelCRCValue.Name = "labelCRCValue";
-            this.labelCRCValue.Size = new System.Drawing.Size(79, 70);
+            this.labelCRCValue.Size = new System.Drawing.Size(84, 78);
             this.labelCRCValue.TabIndex = 21;
             this.labelCRCValue.Text = "0";
             this.labelCRCValue.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -516,10 +897,10 @@ namespace HomeLightGUI
             // 
             this.textBoxData6tx.Dock = System.Windows.Forms.DockStyle.Fill;
             this.textBoxData6tx.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.textBoxData6tx.Location = new System.Drawing.Point(598, 73);
+            this.textBoxData6tx.Location = new System.Drawing.Point(633, 81);
             this.textBoxData6tx.MaxLength = 3;
             this.textBoxData6tx.Name = "textBoxData6tx";
-            this.textBoxData6tx.Size = new System.Drawing.Size(79, 29);
+            this.textBoxData6tx.Size = new System.Drawing.Size(84, 29);
             this.textBoxData6tx.TabIndex = 18;
             this.textBoxData6tx.Text = "0";
             this.textBoxData6tx.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
@@ -528,10 +909,10 @@ namespace HomeLightGUI
             // 
             this.textBoxData5tx.Dock = System.Windows.Forms.DockStyle.Fill;
             this.textBoxData5tx.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.textBoxData5tx.Location = new System.Drawing.Point(513, 73);
+            this.textBoxData5tx.Location = new System.Drawing.Point(543, 81);
             this.textBoxData5tx.MaxLength = 3;
             this.textBoxData5tx.Name = "textBoxData5tx";
-            this.textBoxData5tx.Size = new System.Drawing.Size(79, 29);
+            this.textBoxData5tx.Size = new System.Drawing.Size(84, 29);
             this.textBoxData5tx.TabIndex = 17;
             this.textBoxData5tx.Text = "0";
             this.textBoxData5tx.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
@@ -540,10 +921,10 @@ namespace HomeLightGUI
             // 
             this.textBoxData4tx.Dock = System.Windows.Forms.DockStyle.Fill;
             this.textBoxData4tx.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.textBoxData4tx.Location = new System.Drawing.Point(428, 73);
+            this.textBoxData4tx.Location = new System.Drawing.Point(453, 81);
             this.textBoxData4tx.MaxLength = 3;
             this.textBoxData4tx.Name = "textBoxData4tx";
-            this.textBoxData4tx.Size = new System.Drawing.Size(79, 29);
+            this.textBoxData4tx.Size = new System.Drawing.Size(84, 29);
             this.textBoxData4tx.TabIndex = 16;
             this.textBoxData4tx.Text = "0";
             this.textBoxData4tx.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
@@ -552,10 +933,10 @@ namespace HomeLightGUI
             // 
             this.textBoxData3tx.Dock = System.Windows.Forms.DockStyle.Fill;
             this.textBoxData3tx.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.textBoxData3tx.Location = new System.Drawing.Point(343, 73);
+            this.textBoxData3tx.Location = new System.Drawing.Point(363, 81);
             this.textBoxData3tx.MaxLength = 3;
             this.textBoxData3tx.Name = "textBoxData3tx";
-            this.textBoxData3tx.Size = new System.Drawing.Size(79, 29);
+            this.textBoxData3tx.Size = new System.Drawing.Size(84, 29);
             this.textBoxData3tx.TabIndex = 15;
             this.textBoxData3tx.Text = "0";
             this.textBoxData3tx.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
@@ -564,10 +945,10 @@ namespace HomeLightGUI
             // 
             this.textBoxData2tx.Dock = System.Windows.Forms.DockStyle.Fill;
             this.textBoxData2tx.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.textBoxData2tx.Location = new System.Drawing.Point(258, 73);
+            this.textBoxData2tx.Location = new System.Drawing.Point(273, 81);
             this.textBoxData2tx.MaxLength = 3;
             this.textBoxData2tx.Name = "textBoxData2tx";
-            this.textBoxData2tx.Size = new System.Drawing.Size(79, 29);
+            this.textBoxData2tx.Size = new System.Drawing.Size(84, 29);
             this.textBoxData2tx.TabIndex = 14;
             this.textBoxData2tx.Text = "0";
             this.textBoxData2tx.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
@@ -576,10 +957,10 @@ namespace HomeLightGUI
             // 
             this.textBoxData1tx.Dock = System.Windows.Forms.DockStyle.Fill;
             this.textBoxData1tx.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.textBoxData1tx.Location = new System.Drawing.Point(173, 73);
+            this.textBoxData1tx.Location = new System.Drawing.Point(183, 81);
             this.textBoxData1tx.MaxLength = 3;
             this.textBoxData1tx.Name = "textBoxData1tx";
-            this.textBoxData1tx.Size = new System.Drawing.Size(79, 29);
+            this.textBoxData1tx.Size = new System.Drawing.Size(84, 29);
             this.textBoxData1tx.TabIndex = 13;
             this.textBoxData1tx.Text = "0";
             this.textBoxData1tx.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
@@ -588,9 +969,9 @@ namespace HomeLightGUI
             // 
             this.labelDATA7tx.AutoSize = true;
             this.labelDATA7tx.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.labelDATA7tx.Location = new System.Drawing.Point(683, 0);
+            this.labelDATA7tx.Location = new System.Drawing.Point(723, 0);
             this.labelDATA7tx.Name = "labelDATA7tx";
-            this.labelDATA7tx.Size = new System.Drawing.Size(79, 70);
+            this.labelDATA7tx.Size = new System.Drawing.Size(84, 78);
             this.labelDATA7tx.TabIndex = 8;
             this.labelDATA7tx.Text = "DATA7 (CRC)";
             this.labelDATA7tx.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -599,9 +980,9 @@ namespace HomeLightGUI
             // 
             this.labelDATA6tx.AutoSize = true;
             this.labelDATA6tx.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.labelDATA6tx.Location = new System.Drawing.Point(598, 0);
+            this.labelDATA6tx.Location = new System.Drawing.Point(633, 0);
             this.labelDATA6tx.Name = "labelDATA6tx";
-            this.labelDATA6tx.Size = new System.Drawing.Size(79, 70);
+            this.labelDATA6tx.Size = new System.Drawing.Size(84, 78);
             this.labelDATA6tx.TabIndex = 7;
             this.labelDATA6tx.Text = "DATA6";
             this.labelDATA6tx.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -610,9 +991,9 @@ namespace HomeLightGUI
             // 
             this.labelDATA5tx.AutoSize = true;
             this.labelDATA5tx.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.labelDATA5tx.Location = new System.Drawing.Point(513, 0);
+            this.labelDATA5tx.Location = new System.Drawing.Point(543, 0);
             this.labelDATA5tx.Name = "labelDATA5tx";
-            this.labelDATA5tx.Size = new System.Drawing.Size(79, 70);
+            this.labelDATA5tx.Size = new System.Drawing.Size(84, 78);
             this.labelDATA5tx.TabIndex = 6;
             this.labelDATA5tx.Text = "DATA5";
             this.labelDATA5tx.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -621,9 +1002,9 @@ namespace HomeLightGUI
             // 
             this.labelDATA4tx.AutoSize = true;
             this.labelDATA4tx.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.labelDATA4tx.Location = new System.Drawing.Point(428, 0);
+            this.labelDATA4tx.Location = new System.Drawing.Point(453, 0);
             this.labelDATA4tx.Name = "labelDATA4tx";
-            this.labelDATA4tx.Size = new System.Drawing.Size(79, 70);
+            this.labelDATA4tx.Size = new System.Drawing.Size(84, 78);
             this.labelDATA4tx.TabIndex = 5;
             this.labelDATA4tx.Text = "DATA4";
             this.labelDATA4tx.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -632,9 +1013,9 @@ namespace HomeLightGUI
             // 
             this.labelDATA3tx.AutoSize = true;
             this.labelDATA3tx.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.labelDATA3tx.Location = new System.Drawing.Point(343, 0);
+            this.labelDATA3tx.Location = new System.Drawing.Point(363, 0);
             this.labelDATA3tx.Name = "labelDATA3tx";
-            this.labelDATA3tx.Size = new System.Drawing.Size(79, 70);
+            this.labelDATA3tx.Size = new System.Drawing.Size(84, 78);
             this.labelDATA3tx.TabIndex = 4;
             this.labelDATA3tx.Text = "DATA3";
             this.labelDATA3tx.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -643,9 +1024,9 @@ namespace HomeLightGUI
             // 
             this.labelDATA2tx.AutoSize = true;
             this.labelDATA2tx.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.labelDATA2tx.Location = new System.Drawing.Point(258, 0);
+            this.labelDATA2tx.Location = new System.Drawing.Point(273, 0);
             this.labelDATA2tx.Name = "labelDATA2tx";
-            this.labelDATA2tx.Size = new System.Drawing.Size(79, 70);
+            this.labelDATA2tx.Size = new System.Drawing.Size(84, 78);
             this.labelDATA2tx.TabIndex = 3;
             this.labelDATA2tx.Text = "DATA2";
             this.labelDATA2tx.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -654,9 +1035,9 @@ namespace HomeLightGUI
             // 
             this.labelDATA1tx.AutoSize = true;
             this.labelDATA1tx.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.labelDATA1tx.Location = new System.Drawing.Point(173, 0);
+            this.labelDATA1tx.Location = new System.Drawing.Point(183, 0);
             this.labelDATA1tx.Name = "labelDATA1tx";
-            this.labelDATA1tx.Size = new System.Drawing.Size(79, 70);
+            this.labelDATA1tx.Size = new System.Drawing.Size(84, 78);
             this.labelDATA1tx.TabIndex = 2;
             this.labelDATA1tx.Text = "DATA1";
             this.labelDATA1tx.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -665,9 +1046,9 @@ namespace HomeLightGUI
             // 
             this.labelDATA0tx.AutoSize = true;
             this.labelDATA0tx.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.labelDATA0tx.Location = new System.Drawing.Point(88, 0);
+            this.labelDATA0tx.Location = new System.Drawing.Point(93, 0);
             this.labelDATA0tx.Name = "labelDATA0tx";
-            this.labelDATA0tx.Size = new System.Drawing.Size(79, 70);
+            this.labelDATA0tx.Size = new System.Drawing.Size(84, 78);
             this.labelDATA0tx.TabIndex = 1;
             this.labelDATA0tx.Text = "DATA0";
             this.labelDATA0tx.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -676,9 +1057,9 @@ namespace HomeLightGUI
             // 
             this.labelValuetx.AutoSize = true;
             this.labelValuetx.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.labelValuetx.Location = new System.Drawing.Point(3, 70);
+            this.labelValuetx.Location = new System.Drawing.Point(3, 78);
             this.labelValuetx.Name = "labelValuetx";
-            this.labelValuetx.Size = new System.Drawing.Size(79, 70);
+            this.labelValuetx.Size = new System.Drawing.Size(84, 78);
             this.labelValuetx.TabIndex = 0;
             this.labelValuetx.Text = "Значение";
             this.labelValuetx.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -686,9 +1067,9 @@ namespace HomeLightGUI
             // buttonSend
             // 
             this.buttonSend.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.buttonSend.Location = new System.Drawing.Point(768, 73);
+            this.buttonSend.Location = new System.Drawing.Point(813, 81);
             this.buttonSend.Name = "buttonSend";
-            this.buttonSend.Size = new System.Drawing.Size(81, 64);
+            this.buttonSend.Size = new System.Drawing.Size(87, 72);
             this.buttonSend.TabIndex = 9;
             this.buttonSend.Text = "Отправить";
             this.buttonSend.UseVisualStyleBackColor = true;
@@ -698,10 +1079,10 @@ namespace HomeLightGUI
             // 
             this.textBoxData0tx.Dock = System.Windows.Forms.DockStyle.Fill;
             this.textBoxData0tx.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.textBoxData0tx.Location = new System.Drawing.Point(88, 73);
+            this.textBoxData0tx.Location = new System.Drawing.Point(93, 81);
             this.textBoxData0tx.MaxLength = 3;
             this.textBoxData0tx.Name = "textBoxData0tx";
-            this.textBoxData0tx.Size = new System.Drawing.Size(79, 29);
+            this.textBoxData0tx.Size = new System.Drawing.Size(84, 29);
             this.textBoxData0tx.TabIndex = 10;
             this.textBoxData0tx.Text = "0";
             this.textBoxData0tx.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
@@ -710,280 +1091,34 @@ namespace HomeLightGUI
             // 
             this.labelDebug.AutoSize = true;
             this.labelDebug.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.labelDebug.Location = new System.Drawing.Point(3, 364);
+            this.labelDebug.Location = new System.Drawing.Point(3, 404);
             this.labelDebug.Name = "labelDebug";
-            this.labelDebug.Size = new System.Drawing.Size(852, 23);
+            this.labelDebug.Size = new System.Drawing.Size(903, 21);
             this.labelDebug.TabIndex = 5;
             this.labelDebug.Text = "debug messages";
             this.labelDebug.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
-            // tableLayoutPanelRawColour
+            // ClockTimer
             // 
-            this.tableLayoutPanelRawColour.ColumnCount = 3;
-            this.tableLayoutPanelRawColour.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 15F));
-            this.tableLayoutPanelRawColour.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 15F));
-            this.tableLayoutPanelRawColour.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 70F));
-            this.tableLayoutPanelRawColour.Controls.Add(this.labelSpeed, 0, 5);
-            this.tableLayoutPanelRawColour.Controls.Add(this.textBoxBlue, 1, 2);
-            this.tableLayoutPanelRawColour.Controls.Add(this.labelBlue, 0, 2);
-            this.tableLayoutPanelRawColour.Controls.Add(this.textBoxGreen, 1, 1);
-            this.tableLayoutPanelRawColour.Controls.Add(this.labelGreen, 0, 1);
-            this.tableLayoutPanelRawColour.Controls.Add(this.trackBarRed, 2, 0);
-            this.tableLayoutPanelRawColour.Controls.Add(this.trackBarGreen, 2, 1);
-            this.tableLayoutPanelRawColour.Controls.Add(this.trackBarBlue, 2, 2);
-            this.tableLayoutPanelRawColour.Controls.Add(this.labelRed, 0, 0);
-            this.tableLayoutPanelRawColour.Controls.Add(this.textBoxRed, 1, 0);
-            this.tableLayoutPanelRawColour.Controls.Add(this.trackBarWhite, 2, 3);
-            this.tableLayoutPanelRawColour.Controls.Add(this.labelWhite, 0, 3);
-            this.tableLayoutPanelRawColour.Controls.Add(this.textBoxWhite, 1, 3);
-            this.tableLayoutPanelRawColour.Controls.Add(this.labelBlack, 0, 4);
-            this.tableLayoutPanelRawColour.Controls.Add(this.textBoxBlack, 1, 4);
-            this.tableLayoutPanelRawColour.Controls.Add(this.trackBarBlack, 2, 4);
-            this.tableLayoutPanelRawColour.Controls.Add(this.textBoxSpeed, 1, 5);
-            this.tableLayoutPanelRawColour.Controls.Add(this.trackBarSpeed, 2, 5);
-            this.tableLayoutPanelRawColour.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanelRawColour.Location = new System.Drawing.Point(0, 0);
-            this.tableLayoutPanelRawColour.Name = "tableLayoutPanelRawColour";
-            this.tableLayoutPanelRawColour.RowCount = 6;
-            this.tableLayoutPanelRawColour.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 16.66667F));
-            this.tableLayoutPanelRawColour.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 16.66667F));
-            this.tableLayoutPanelRawColour.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 16.66667F));
-            this.tableLayoutPanelRawColour.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 16.66667F));
-            this.tableLayoutPanelRawColour.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 16.66667F));
-            this.tableLayoutPanelRawColour.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 16.66667F));
-            this.tableLayoutPanelRawColour.Size = new System.Drawing.Size(858, 264);
-            this.tableLayoutPanelRawColour.TabIndex = 5;
-            // 
-            // labelSpeed
-            // 
-            this.labelSpeed.AutoSize = true;
-            this.labelSpeed.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.labelSpeed.Location = new System.Drawing.Point(3, 215);
-            this.labelSpeed.Name = "labelSpeed";
-            this.labelSpeed.Size = new System.Drawing.Size(122, 49);
-            this.labelSpeed.TabIndex = 16;
-            this.labelSpeed.Text = "Скорость";
-            this.labelSpeed.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // textBoxBlue
-            // 
-            this.textBoxBlue.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.textBoxBlue.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.textBoxBlue.Location = new System.Drawing.Point(131, 89);
-            this.textBoxBlue.MaxLength = 3;
-            this.textBoxBlue.Name = "textBoxBlue";
-            this.textBoxBlue.Size = new System.Drawing.Size(122, 29);
-            this.textBoxBlue.TabIndex = 9;
-            this.textBoxBlue.Text = "0";
-            this.textBoxBlue.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            // 
-            // labelBlue
-            // 
-            this.labelBlue.AutoSize = true;
-            this.labelBlue.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.labelBlue.Location = new System.Drawing.Point(3, 86);
-            this.labelBlue.Name = "labelBlue";
-            this.labelBlue.Size = new System.Drawing.Size(122, 43);
-            this.labelBlue.TabIndex = 8;
-            this.labelBlue.Text = "Синий";
-            this.labelBlue.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // textBoxGreen
-            // 
-            this.textBoxGreen.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.textBoxGreen.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.textBoxGreen.Location = new System.Drawing.Point(131, 46);
-            this.textBoxGreen.MaxLength = 3;
-            this.textBoxGreen.Name = "textBoxGreen";
-            this.textBoxGreen.Size = new System.Drawing.Size(122, 29);
-            this.textBoxGreen.TabIndex = 7;
-            this.textBoxGreen.Text = "0";
-            this.textBoxGreen.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            // 
-            // labelGreen
-            // 
-            this.labelGreen.AutoSize = true;
-            this.labelGreen.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.labelGreen.Location = new System.Drawing.Point(3, 43);
-            this.labelGreen.Name = "labelGreen";
-            this.labelGreen.Size = new System.Drawing.Size(122, 43);
-            this.labelGreen.TabIndex = 6;
-            this.labelGreen.Text = "Зеленый";
-            this.labelGreen.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // trackBarRed
-            // 
-            this.trackBarRed.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.trackBarRed.Location = new System.Drawing.Point(259, 3);
-            this.trackBarRed.Maximum = 51;
-            this.trackBarRed.Name = "trackBarRed";
-            this.trackBarRed.Size = new System.Drawing.Size(596, 37);
-            this.trackBarRed.SmallChange = 5;
-            this.trackBarRed.TabIndex = 0;
-            this.trackBarRed.TickStyle = System.Windows.Forms.TickStyle.Both;
-            // 
-            // trackBarGreen
-            // 
-            this.trackBarGreen.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.trackBarGreen.Location = new System.Drawing.Point(259, 46);
-            this.trackBarGreen.Maximum = 51;
-            this.trackBarGreen.Name = "trackBarGreen";
-            this.trackBarGreen.Size = new System.Drawing.Size(596, 37);
-            this.trackBarGreen.SmallChange = 5;
-            this.trackBarGreen.TabIndex = 2;
-            this.trackBarGreen.TickStyle = System.Windows.Forms.TickStyle.Both;
-            // 
-            // trackBarBlue
-            // 
-            this.trackBarBlue.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.trackBarBlue.Location = new System.Drawing.Point(259, 89);
-            this.trackBarBlue.Maximum = 51;
-            this.trackBarBlue.Name = "trackBarBlue";
-            this.trackBarBlue.Size = new System.Drawing.Size(596, 37);
-            this.trackBarBlue.SmallChange = 5;
-            this.trackBarBlue.TabIndex = 3;
-            this.trackBarBlue.TickStyle = System.Windows.Forms.TickStyle.Both;
-            // 
-            // labelRed
-            // 
-            this.labelRed.AutoSize = true;
-            this.labelRed.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.labelRed.Location = new System.Drawing.Point(3, 0);
-            this.labelRed.Name = "labelRed";
-            this.labelRed.Size = new System.Drawing.Size(122, 43);
-            this.labelRed.TabIndex = 4;
-            this.labelRed.Text = "Красный";
-            this.labelRed.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // textBoxRed
-            // 
-            this.textBoxRed.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.textBoxRed.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.textBoxRed.Location = new System.Drawing.Point(131, 3);
-            this.textBoxRed.MaxLength = 3;
-            this.textBoxRed.Name = "textBoxRed";
-            this.textBoxRed.Size = new System.Drawing.Size(122, 29);
-            this.textBoxRed.TabIndex = 5;
-            this.textBoxRed.Text = "0";
-            this.textBoxRed.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            // 
-            // trackBarWhite
-            // 
-            this.trackBarWhite.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.trackBarWhite.Location = new System.Drawing.Point(259, 132);
-            this.trackBarWhite.Maximum = 51;
-            this.trackBarWhite.Name = "trackBarWhite";
-            this.trackBarWhite.Size = new System.Drawing.Size(596, 37);
-            this.trackBarWhite.SmallChange = 5;
-            this.trackBarWhite.TabIndex = 12;
-            this.trackBarWhite.TickStyle = System.Windows.Forms.TickStyle.Both;
-            // 
-            // labelWhite
-            // 
-            this.labelWhite.AutoSize = true;
-            this.labelWhite.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.labelWhite.Location = new System.Drawing.Point(3, 129);
-            this.labelWhite.Name = "labelWhite";
-            this.labelWhite.Size = new System.Drawing.Size(122, 43);
-            this.labelWhite.TabIndex = 10;
-            this.labelWhite.Text = "Белый";
-            this.labelWhite.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // textBoxWhite
-            // 
-            this.textBoxWhite.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.textBoxWhite.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.textBoxWhite.Location = new System.Drawing.Point(131, 132);
-            this.textBoxWhite.MaxLength = 3;
-            this.textBoxWhite.Name = "textBoxWhite";
-            this.textBoxWhite.Size = new System.Drawing.Size(122, 29);
-            this.textBoxWhite.TabIndex = 11;
-            this.textBoxWhite.Text = "0";
-            this.textBoxWhite.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            // 
-            // labelBlack
-            // 
-            this.labelBlack.AutoSize = true;
-            this.labelBlack.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.labelBlack.Location = new System.Drawing.Point(3, 172);
-            this.labelBlack.Name = "labelBlack";
-            this.labelBlack.Size = new System.Drawing.Size(122, 43);
-            this.labelBlack.TabIndex = 13;
-            this.labelBlack.Text = "Черный";
-            this.labelBlack.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // textBoxBlack
-            // 
-            this.textBoxBlack.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.textBoxBlack.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.textBoxBlack.Location = new System.Drawing.Point(131, 175);
-            this.textBoxBlack.MaxLength = 3;
-            this.textBoxBlack.Name = "textBoxBlack";
-            this.textBoxBlack.Size = new System.Drawing.Size(122, 29);
-            this.textBoxBlack.TabIndex = 14;
-            this.textBoxBlack.Text = "0";
-            this.textBoxBlack.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            // 
-            // trackBarBlack
-            // 
-            this.trackBarBlack.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.trackBarBlack.Location = new System.Drawing.Point(259, 175);
-            this.trackBarBlack.Maximum = 51;
-            this.trackBarBlack.Name = "trackBarBlack";
-            this.trackBarBlack.Size = new System.Drawing.Size(596, 37);
-            this.trackBarBlack.SmallChange = 5;
-            this.trackBarBlack.TabIndex = 15;
-            this.trackBarBlack.TickStyle = System.Windows.Forms.TickStyle.Both;
-            // 
-            // textBoxSpeed
-            // 
-            this.textBoxSpeed.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.textBoxSpeed.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.textBoxSpeed.Location = new System.Drawing.Point(131, 218);
-            this.textBoxSpeed.MaxLength = 3;
-            this.textBoxSpeed.Name = "textBoxSpeed";
-            this.textBoxSpeed.Size = new System.Drawing.Size(122, 29);
-            this.textBoxSpeed.TabIndex = 17;
-            this.textBoxSpeed.Text = "0";
-            this.textBoxSpeed.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            // 
-            // trackBarSpeed
-            // 
-            this.trackBarSpeed.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.trackBarSpeed.Location = new System.Drawing.Point(259, 218);
-            this.trackBarSpeed.Maximum = 51;
-            this.trackBarSpeed.Name = "trackBarSpeed";
-            this.trackBarSpeed.Size = new System.Drawing.Size(596, 43);
-            this.trackBarSpeed.SmallChange = 5;
-            this.trackBarSpeed.TabIndex = 18;
-            this.trackBarSpeed.TickStyle = System.Windows.Forms.TickStyle.Both;
+            this.ClockTimer.Enabled = true;
+            this.ClockTimer.Interval = 1000;
+            this.ClockTimer.Tick += new System.EventHandler(this.ClockTimer_Tick);
             // 
             // MyForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.ClientSize = new System.Drawing.Size(872, 419);
+            this.ClientSize = new System.Drawing.Size(923, 457);
             this.Controls.Add(this.tabControl);
             this.Name = "MyForm";
             this.Text = "Form1";
-            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.MyForm_FormClosed);
             this.Load += new System.EventHandler(this.MyForm_Load);
             this.tabControl.ResumeLayout(false);
             this.tabColour.ResumeLayout(false);
             this.splitContainerColour.Panel1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.splitContainerColour)).EndInit();
             this.splitContainerColour.ResumeLayout(false);
-            this.tabClock.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).EndInit();
-            this.splitContainer1.ResumeLayout(false);
-            this.tabDeveloper.ResumeLayout(false);
-            this.tableLayoutPanel1.ResumeLayout(false);
-            this.tableLayoutPanel1.PerformLayout();
-            this.tableLayoutPanel3.ResumeLayout(false);
-            this.tableLayoutPanel3.PerformLayout();
-            this.tableLayoutPanel2.ResumeLayout(false);
-            this.tableLayoutPanel2.PerformLayout();
             this.tableLayoutPanelRawColour.ResumeLayout(false);
             this.tableLayoutPanelRawColour.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.trackBarRed)).EndInit();
@@ -992,6 +1127,18 @@ namespace HomeLightGUI
             ((System.ComponentModel.ISupportInitialize)(this.trackBarWhite)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.trackBarBlack)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.trackBarSpeed)).EndInit();
+            this.tabClock.ResumeLayout(false);
+            this.tableLayoutPanel4.ResumeLayout(false);
+            this.tableLayoutPanel5.ResumeLayout(false);
+            this.groupBox1.ResumeLayout(false);
+            this.groupBox2.ResumeLayout(false);
+            this.tabDeveloper.ResumeLayout(false);
+            this.tableLayoutPanel1.ResumeLayout(false);
+            this.tableLayoutPanel1.PerformLayout();
+            this.tableLayoutPanel3.ResumeLayout(false);
+            this.tableLayoutPanel3.PerformLayout();
+            this.tableLayoutPanel2.ResumeLayout(false);
+            this.tableLayoutPanel2.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -1044,7 +1191,6 @@ namespace HomeLightGUI
         private System.Windows.Forms.Label labelDebug;
         private System.Windows.Forms.TabPage tabClock;
         private System.Windows.Forms.SplitContainer splitContainerColour;
-        private System.Windows.Forms.SplitContainer splitContainer1;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanelRawColour;
         private System.Windows.Forms.Label labelSpeed;
         private System.Windows.Forms.TextBox textBoxBlue;
@@ -1064,6 +1210,16 @@ namespace HomeLightGUI
         private System.Windows.Forms.TrackBar trackBarBlack;
         private System.Windows.Forms.TextBox textBoxSpeed;
         private System.Windows.Forms.TrackBar trackBarSpeed;
+        private System.Windows.Forms.Button buttonSyncTime;
+        private System.Windows.Forms.Timer ClockTimer;
+        private System.Windows.Forms.GroupBox groupBox2;
+        private System.Windows.Forms.Label labelModuleDate;
+        private System.Windows.Forms.GroupBox groupBox1;
+        private System.Windows.Forms.Label labelSystemTime;
+        private System.Windows.Forms.Label labelModuleTime;
+        private System.Windows.Forms.Label labelSystemDate;
+        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel4;
+        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel5;
     }
 }
 

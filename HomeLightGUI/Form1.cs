@@ -17,16 +17,66 @@ namespace HomeLightGUI
             InitializeComponent();
         }
 
-        
-        private void UpdateTimer_Tick(object sender, EventArgs e)
+        private void ClockTimer_Tick(object sender, EventArgs e)    //таймер 1с
         {
+            //обновляем системное время и выводим во вкладку "время"
+            TIME.updateSysTimeBuffer();
+            labelSystemTime.Text = "";
+            for (int i = 0; i < 3; i++)
+            {
+                if (TIME.bufferSysTime[2-i].ToString().Length == 1) labelSystemTime.Text += "0";
+                labelSystemTime.Text += TIME.bufferSysTime[2-i].ToString();
+                if (i < 2) labelSystemTime.Text += ":";
+            }
+            labelSystemDate.Text = "";
+            for (int i = 0; i < 3; i++)
+            {
+                if (TIME.bufferSysTime[i+3].ToString().Length == 1) labelSystemDate.Text += "0";
+                labelSystemDate.Text += TIME.bufferSysTime[i+3].ToString();
+                if (i < 2) labelSystemDate.Text += " / ";
+                else labelSystemDate.Text += "  ";
+            }
+            if (TIME.bufferSysTime[6] < 7) labelSystemDate.Text += TIME.daysOfWeek[TIME.bufferSysTime[6]];
+
+            //запрашиваем время модуля и ответ выводим во вкладку "время"
+            //UART.WriteByteToBufferTX((byte)(12), 0);        //запрашиваем текущий цвет
+            //UART.SendBufferTX();
+
+        }
+
+        private void UpdateTimer_Tick(object sender, EventArgs e)   //таймер 100мс
+        {
+            UART.RecieveMessage();                                          //принимаем пакет из UART
+            updateDevText();                                                //отображаем его во вкладке разработчика
+
             if (Globals.firstTime)                              //при инициализации связи
             {
                 UART.WriteByteToBufferTX((byte)(02), 0);        //запрашиваем текущий цвет
                 UART.SendBufferTX();
+                if (UART.GetByteFromBufferRX(0) == 2)           //при инициализации связи если получили команду 02
+                {
+                    Globals.firstTime = false;                  //считаем что инициализация связи прошла успешно 
+                    updateColourFromUART();                     //обновляем вкладку с цветом (возможно нет смысла проверять первый раз)
+                }
+            }
+            else                                               //после инициализации связи
+            {
+                UART.WriteByteToBufferTX((byte)(01), 0);                            //всё время шлем новый цвет (потом поменять на "если находимся на вкладке "цвет")
+                UART.WriteByteToBufferTX((byte)(trackBarRed.Value * 5), 1);
+                UART.WriteByteToBufferTX((byte)(trackBarGreen.Value * 5), 2);
+                UART.WriteByteToBufferTX((byte)(trackBarBlue.Value * 5), 3);
+                UART.WriteByteToBufferTX((byte)(trackBarWhite.Value * 5), 4);
+                UART.WriteByteToBufferTX((byte)(trackBarBlack.Value * 5), 5);
+                UART.WriteByteToBufferTX((byte)(trackBarSpeed.Value * 5), 6);
+                UART.SendBufferTX();
             }
 
-            UART.RecieveMessage();                                          //принимаем пакет из UART
+            //switch (UART.GetByteFromBufferRX(0))
+
+        }
+
+        private void updateDevText()
+        {
             valueDATA0rx.Text = UART.GetByteFromBufferRX(0).ToString();     //отображаем его во вкладке разработчика
             valueDATA1rx.Text = UART.GetByteFromBufferRX(1).ToString();
             valueDATA2rx.Text = UART.GetByteFromBufferRX(2).ToString();
@@ -35,28 +85,7 @@ namespace HomeLightGUI
             valueDATA5rx.Text = UART.GetByteFromBufferRX(5).ToString();
             valueDATA6rx.Text = UART.GetByteFromBufferRX(6).ToString();
             valueDATA7rx.Text = UART.GetByteFromBufferRX(7).ToString();
-
-            if ((UART.GetByteFromBufferRX(0) == 2)&&(Globals.firstTime))    //при инициализации связи если получили команду 02
-            {
-                Globals.firstTime = false;                                  //считаем что инициализация связи прошла успешно 
-                updateColourFromUART();                                     //обновляем вкладку с цветом (возможно нет смысла проверять первый раз)
-            }
-
-            if (!Globals.firstTime)                                                 //после инициализации связи
-            {
-                UART.WriteByteToBufferTX((byte)(01), 0);                            //всё время шлем новый цвет (потом поменять на "если находимся на вкладке "цвет")
-                UART.WriteByteToBufferTX((byte)(trackBarRed.Value * 5), 1);
-                UART.WriteByteToBufferTX((byte)(trackBarGreen.Value * 5), 2);
-                UART.WriteByteToBufferTX((byte)(trackBarBlue.Value * 5), 3);
-                UART.SendBufferTX();
-            }
         }
-
-        private void MyForm_FormClosed(object sender, FormClosedEventArgs e)    //убиваем все потоки
-        {
-            Environment.Exit(0);
-        }
-
         private void buttonSend_Click(object sender, EventArgs e)               //нажали на кнопку "отправить"
         {
             UART.WriteByteToBufferTX(byte.Parse(textBoxData0tx.Text), 0);       //закидываем в буфер содержимое полей
@@ -97,5 +126,16 @@ namespace HomeLightGUI
             trackBarGreen.Value = (byte)(UART.GetByteFromBufferRX(2) / 5);
             trackBarBlue.Value = (byte)(UART.GetByteFromBufferRX(3) / 5);
         }
+
+        private void buttonSyncTime_Click(object sender, EventArgs e)
+        {
+            UART.WriteByteToBufferTX(11, 0);
+            for (int i = 0; i < 3; i++) UART.WriteByteToBufferTX(TIME.bufferSysTime[i], i + 1);
+            labelCRCValue.Text = UART.SendBufferTX().ToString();                //отправляем буфер, выводим CRC
+            UART.WriteByteToBufferTX(13, 0);
+            for (int i = 0; i < 4; i++) UART.WriteByteToBufferTX(TIME.bufferSysTime[i+3], i + 1);
+            labelCRCValue.Text = UART.SendBufferTX().ToString();                //отправляем буфер, выводим CRC
+        }
+
     }
 }
