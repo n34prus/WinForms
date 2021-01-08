@@ -25,10 +25,9 @@ namespace HomeLightGUI
 
     public class Globals    //глобальные переменные (в ООП так не принято вроде)
     {
-        public static UInt16 counter1 = 0;
-        public static UInt16 counter2 = 0;
         public static bool firstTime = true;
         public static bool blink = true;
+        public static byte counter_tabTIME = 0;
     }
 
     public static class UART    //работа с COM-портом

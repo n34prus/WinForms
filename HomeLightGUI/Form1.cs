@@ -46,15 +46,30 @@ namespace HomeLightGUI
                     break;
                 //ВРЕМЯ
                 case 1:
-                    UpdateTimer.Interval = 500;                         //10Гц
+                    UpdateTimer.Interval = 200;                         //50Гц
                     //обновляем системное время и выводим во вкладку "время"
                     TIME.updateSysTimeBuffer();
                     updateSystemTime();
 
                     //запрашиваем время модуля и ответ выводим во вкладку "время"
-                    Globals.blink = !Globals.blink;
-                    if (Globals.blink) UART.WriteByteToBufferTX((byte)(12), 0);        //запрашиваем текущее время
-                    else UART.WriteByteToBufferTX((byte)(14), 0);                       //запрашиваем дату (по очереди)
+                    Globals.counter_tabTIME++;
+                    if (Globals.counter_tabTIME > 3) Globals.counter_tabTIME = 0;
+                    switch (Globals.counter_tabTIME)
+                    {
+                        case 0:
+                            UART.WriteByteToBufferTX((byte)(12), 0);        //запрашиваем текущее время
+                            break;
+                        case 1:
+                            UART.WriteByteToBufferTX((byte)(14), 0);        //дату
+                            break;
+                        case 2:
+                            UART.WriteByteToBufferTX((byte)(22), 0);        //недельный будильник
+                            break;
+                        case 3:
+                            UART.WriteByteToBufferTX((byte)(24), 0);        //однократный будильник
+                            break;
+                    }
+
                     UART.SendBufferTX();
                     break;
             }
@@ -74,10 +89,36 @@ namespace HomeLightGUI
                 case 14:
                     updateModuleDate();
                     break;
+                case 22:
+                    updateModuleWA();
+                    break;
+                case 24:
+                    //updateModuleTA();
+                    break;
             }
 
         }
 
+        private void updateModuleWA()
+        {
+            if (UART.GetByteFromBufferRX(1) == 1) checkedListBoxWAEnable.ForeColor = Color.FromArgb(50, 255, 50);
+            else checkedListBoxWAEnable.ForeColor = Color.FromArgb(255, 50, 50);
+
+            labelWASCurrent.Text = "";
+            if (UART.GetByteFromBufferRX(4).ToString().Length < 2) labelWASCurrent.Text += "0";
+            labelWASCurrent.Text += UART.GetByteFromBufferRX(4).ToString();
+            labelWASCurrent.Text += ":";
+            if (UART.GetByteFromBufferRX(3).ToString().Length < 2) labelWASCurrent.Text += "0";
+            labelWASCurrent.Text += UART.GetByteFromBufferRX(3).ToString();
+
+            labelWAECurrent.Text = "";
+            if (UART.GetByteFromBufferRX(6).ToString().Length < 2) labelWAECurrent.Text += "0";
+            labelWAECurrent.Text += UART.GetByteFromBufferRX(6).ToString();
+            labelWAECurrent.Text += ":";
+            if (UART.GetByteFromBufferRX(5).ToString().Length < 2) labelWAECurrent.Text += "0";
+            labelWAECurrent.Text += UART.GetByteFromBufferRX(5).ToString(); 
+
+        }
         private void updateSystemTime()
         {
             labelSystemTime.Text = "";
@@ -177,5 +218,6 @@ namespace HomeLightGUI
             for (int i = 0; i < 4; i++) UART.WriteByteToBufferTX(TIME.bufferSysTime[i+3], i + 1);
             labelCRCValue.Text = UART.SendBufferTX().ToString();                //отправляем буфер, выводим CRC
         }
+
     }
 }
