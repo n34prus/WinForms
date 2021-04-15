@@ -25,7 +25,8 @@ namespace HomeLightGUI
 
     public class Globals    //глобальные переменные (в ООП так не принято вроде)
     {
-        public static bool firstTime = true;
+        public static bool flagUpdateAlarm = true;
+        public static bool flagFirstStart = true;
         public static bool blink = true;
         public static byte counter_tabTIME = 0;
     }
