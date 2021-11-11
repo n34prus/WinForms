@@ -36,6 +36,7 @@ namespace HomeLightGUI
                     }
                     else                                               //после инициализации связи
                     {
+                        UpdateTimer.Interval = 300;
                         UART.WriteByteToBufferTX((byte)(01), 0);                            //всё время шлем новый цвет
                         UART.WriteByteToBufferTX((byte)(trackBarRed1.Value * 5), 1);
                         UART.WriteByteToBufferTX((byte)(trackBarGreen1.Value * 5), 2);

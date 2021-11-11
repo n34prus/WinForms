@@ -74,6 +74,7 @@ namespace HomeLightGUI
             this.trackBarBlack2 = new System.Windows.Forms.TrackBar();
             this.textBoxSpeed2 = new System.Windows.Forms.TextBox();
             this.trackBarSpeed2 = new System.Windows.Forms.TrackBar();
+            this.label11 = new System.Windows.Forms.Label();
             this.tabClock = new System.Windows.Forms.TabPage();
             this.tableLayoutPanelClock = new System.Windows.Forms.TableLayoutPanel();
             this.tableLayoutPanelDateTime = new System.Windows.Forms.TableLayoutPanel();
@@ -143,7 +144,6 @@ namespace HomeLightGUI
             this.textBoxData0tx = new System.Windows.Forms.TextBox();
             this.labelDebug = new System.Windows.Forms.Label();
             this.ClockTimer = new System.Windows.Forms.Timer(this.components);
-            this.label11 = new System.Windows.Forms.Label();
             this.tabControl.SuspendLayout();
             this.tabColour.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainerColour)).BeginInit();
@@ -799,6 +799,21 @@ namespace HomeLightGUI
             this.trackBarSpeed2.TabIndex = 18;
             this.trackBarSpeed2.TickStyle = System.Windows.Forms.TickStyle.Both;
             this.trackBarSpeed2.Scroll += new System.EventHandler(this.trackBarAny_Scroll);
+            // 
+            // label11
+            // 
+            this.label11.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.label11.AutoSize = true;
+            this.label11.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.label11.ForeColor = System.Drawing.Color.Beige;
+            this.label11.Location = new System.Drawing.Point(247, 0);
+            this.label11.Name = "label11";
+            this.label11.Size = new System.Drawing.Size(567, 36);
+            this.label11.TabIndex = 19;
+            this.label11.Text = "Управление вторым каналом";
+            this.label11.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // tabClock
             // 
@@ -1756,21 +1771,6 @@ namespace HomeLightGUI
             // 
             this.ClockTimer.Enabled = true;
             this.ClockTimer.Interval = 1000;
-            // 
-            // label11
-            // 
-            this.label11.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.label11.AutoSize = true;
-            this.label11.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label11.ForeColor = System.Drawing.Color.Beige;
-            this.label11.Location = new System.Drawing.Point(247, 0);
-            this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(567, 36);
-            this.label11.TabIndex = 19;
-            this.label11.Text = "Управление вторым каналом";
-            this.label11.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // MyForm
             // 

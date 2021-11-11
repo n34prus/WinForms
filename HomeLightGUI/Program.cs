@@ -33,32 +33,41 @@ namespace HomeLightGUI
 
     public static class UART    //работа с COM-портом
     {
-        private static SerialPort port = new SerialPort();      //объект: port
+        private static SerialPort _port = new SerialPort();      //объект: port
         private static byte[] bufferTX = new byte[9];           //буфер передачи
         private static int[] bufferRX = new int[9];             //буфер приема
         private static int[] preBufferRX = new int[9];          //буфер до подсчета CRC
         public static void Initialize()     //инициализация протоколов передачи данных, открытие UART 
         {
-            port.PortName = "COM7";
-            port.BaudRate = 57600;
-            port.DataBits = 8;
-            port.Parity = System.IO.Ports.Parity.None;
-            port.StopBits = System.IO.Ports.StopBits.One;
-            port.ReadTimeout = 10;
-            port.WriteTimeout = 10;
-            port.Open();
+            _port.PortName = "COM3"; //по умолчанию БТ
+            string[] ports = SerialPort.GetPortNames();
+            /*
+            foreach (string enabledPort in ports)   //если подключен провод
+            {
+                if (enabledPort == "COM7") port.PortName = "COM7";
+            }
+            */
+            _port.BaudRate = 57600;
+            _port.DataBits = 8;
+            _port.Parity = System.IO.Ports.Parity.None;
+            _port.StopBits = System.IO.Ports.StopBits.One;
+            _port.ReadTimeout = 100;
+            _port.WriteTimeout = 100;
+            _port.Close();
+            Thread.Sleep(1000);
+            _port.Open();
             UART.ClearBufferTX();
         }
         public static int RecieveMessage()  //записывает в буфер приема 8 принятых по UART байт
         {
             int summ = 0;
-            if (port.BytesToRead > 0)
+            if (_port.BytesToRead > 0)
             {
                 try
                 {
                     for (int i = 0; i < 8; i++)
                     {
-                        preBufferRX[i] = port.ReadByte();
+                        preBufferRX[i] = _port.ReadByte();
                         if (i < 7) summ += preBufferRX[i];
                     }
                 }
@@ -68,7 +77,7 @@ namespace HomeLightGUI
                 }
                 if ((summ&255) == preBufferRX[7]) for (int i = 0; i < 8; i++) bufferRX[i] = preBufferRX[i];
             }
-            return port.BytesToRead;
+            return _port.BytesToRead;
         }
         public static int GetByteFromBufferRX(int index)    //возвращает принятый байт по индексу
         {
@@ -92,7 +101,7 @@ namespace HomeLightGUI
                 summ += UART.bufferTX[i];
             }
             UART.WriteByteToBufferTX((byte)(summ), 7);
-            UART.port.Write(bufferTX, 0, 8);
+            UART._port.Write(bufferTX, 0, 8);
             UART.ClearBufferTX();
             return summ;
         }
