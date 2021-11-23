@@ -11,13 +11,16 @@ using System.IO.Ports;
 
 namespace HomeLightGUI
 {
-    public partial class MyForm : Form
+    public partial class GeneralForm : Form
     {
         //public SerialPort _port;      //объект: port
-        public MyForm()
+        public GeneralForm()
         {
             InitializeComponent();
-            while (!Globals.portIsOpen) { }
+            //MessageBox.Show("CONNECTED TO COM4");
+            while (!Globals.portIsOpen) if (UART.Initialize()) Globals.portIsOpen = true;
+            //while (!Globals.portIsOpen) { }
+            //MessageBox.Show("connected!");
             UpdateTimer.Start();
         }
         

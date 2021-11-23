@@ -1,7 +1,7 @@
 ﻿
 namespace HomeLightGUI
 {
-    partial class MyForm
+    partial class GeneralForm
     {
         /// <summary>
         /// Обязательная переменная конструктора.
@@ -30,7 +30,7 @@ namespace HomeLightGUI
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MyForm));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(GeneralForm));
             this.UpdateTimer = new System.Windows.Forms.Timer(this.components);
             this.tabControl = new System.Windows.Forms.TabControl();
             this.tabColour = new System.Windows.Forms.TabPage();
@@ -1771,7 +1771,7 @@ namespace HomeLightGUI
             this.ClockTimer.Enabled = true;
             this.ClockTimer.Interval = 1000;
             // 
-            // MyForm
+            // GeneralForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -1780,7 +1780,7 @@ namespace HomeLightGUI
             this.ClientSize = new System.Drawing.Size(831, 526);
             this.Controls.Add(this.tabControl);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-            this.Name = "MyForm";
+            this.Name = "GeneralForm";
             this.Text = "HomeLight GUI";
             this.tabControl.ResumeLayout(false);
             this.tabColour.ResumeLayout(false);

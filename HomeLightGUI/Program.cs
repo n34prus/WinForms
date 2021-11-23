@@ -16,10 +16,12 @@ namespace HomeLightGUI
         [STAThread]
         static void Main()
         {
-            while (!Globals.portIsOpen) if (UART.Initialize()) Globals.portIsOpen = true;
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new MyForm());
+            Application.Run(new SelectPortForm());
+            //MessageBox.Show("CONNECTED TO PORT!");
+            //while (!Globals.portIsOpen) if (UART.Initialize()) Globals.portIsOpen = true;
+            Application.Run(new GeneralForm());
         }
     }
 
@@ -38,12 +40,20 @@ namespace HomeLightGUI
         private static byte[] bufferTX = new byte[9];           //буфер передачи
         private static int[] bufferRX = new int[9];             //буфер приема
         private static int[] preBufferRX = new int[9];          //буфер до подсчета CRC
+        private static string portName = "COM4";
+
+        public static void SetPort(string _portName)
+        {
+            portName = _portName;
+        }
         public static bool Initialize()     //инициализация протоколов передачи данных, открытие UART 
         {
-            
-            _port.PortName = "COM4"; //по умолчанию БТ
-            string[] ports = SerialPort.GetPortNames();
+
+            //_port.PortName = "COM4"; //по умолчанию БТ
+            _port.PortName = portName;
             /*
+            string[] ports = SerialPort.GetPortNames();
+            
             foreach (string enabledPort in ports)   //если подключен провод
             {
                 if (enabledPort == "COM7") port.PortName = "COM7";
@@ -59,19 +69,19 @@ namespace HomeLightGUI
             //Thread.Sleep(1000);
             try
             {
-                for (int i=0; i<10; i++)
+                for (int i=0; i<=0; i++)
                 //while()
                 {
                     if (!_port.IsOpen)
                     {
                         _port.Open();
-                        Thread.Sleep(10);
+                        //Thread.Sleep(10);
                     }
                 }
             }
             catch (Exception e )
             {
-                Console.WriteLine("cant open port");
+                Console.WriteLine("cant open port " + _port.PortName);
                 return false;
             }
             UART.ClearBufferTX();
