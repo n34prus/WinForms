@@ -182,7 +182,6 @@ namespace HomeLightGUI
             // 
             // UpdateTimer
             // 
-            this.UpdateTimer.Enabled = true;
             this.UpdateTimer.Tick += new System.EventHandler(this.UpdateTimer_Tick);
             // 
             // tabControl
@@ -1858,7 +1857,7 @@ namespace HomeLightGUI
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel3;
         private System.Windows.Forms.Label valueDATA7rx;
         private System.Windows.Forms.Label labelDATA7rx;
-        private System.Windows.Forms.Label labelDATA6rx;
+        internal System.Windows.Forms.Label labelDATA6rx;
         private System.Windows.Forms.Label labelDATA5rx;
         private System.Windows.Forms.Label labelDATA4rx;
         private System.Windows.Forms.Label label7labelDATA3rx;

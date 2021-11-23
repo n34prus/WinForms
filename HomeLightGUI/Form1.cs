@@ -7,16 +7,20 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.IO.Ports;
 
 namespace HomeLightGUI
 {
     public partial class MyForm : Form
     {
+        //public SerialPort _port;      //объект: port
         public MyForm()
         {
             InitializeComponent();
+            while (!Globals.portIsOpen) { }
+            UpdateTimer.Start();
         }
-
+        
         private void UpdateTimer_Tick(object sender, EventArgs e)   //таймер 100мс
         {
             UART.RecieveMessage();                                          //принимаем пакет из UART

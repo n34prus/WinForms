@@ -16,7 +16,7 @@ namespace HomeLightGUI
         [STAThread]
         static void Main()
         {
-            UART.Initialize();
+            while (!Globals.portIsOpen) if (UART.Initialize()) Globals.portIsOpen = true;
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
             Application.Run(new MyForm());
@@ -29,6 +29,7 @@ namespace HomeLightGUI
         public static bool flagFirstStart = true;
         public static bool blink = true;
         public static byte counter_tabTIME = 0;
+        public static bool portIsOpen = false;
     }
 
     public static class UART    //работа с COM-портом
@@ -37,9 +38,10 @@ namespace HomeLightGUI
         private static byte[] bufferTX = new byte[9];           //буфер передачи
         private static int[] bufferRX = new int[9];             //буфер приема
         private static int[] preBufferRX = new int[9];          //буфер до подсчета CRC
-        public static void Initialize()     //инициализация протоколов передачи данных, открытие UART 
+        public static bool Initialize()     //инициализация протоколов передачи данных, открытие UART 
         {
-            _port.PortName = "COM3"; //по умолчанию БТ
+            
+            _port.PortName = "COM4"; //по умолчанию БТ
             string[] ports = SerialPort.GetPortNames();
             /*
             foreach (string enabledPort in ports)   //если подключен провод
@@ -51,33 +53,55 @@ namespace HomeLightGUI
             _port.DataBits = 8;
             _port.Parity = System.IO.Ports.Parity.None;
             _port.StopBits = System.IO.Ports.StopBits.One;
-            _port.ReadTimeout = 100;
-            _port.WriteTimeout = 100;
-            _port.Close();
-            Thread.Sleep(1000);
-            _port.Open();
+            _port.ReadTimeout = 5000;
+            _port.WriteTimeout = 5000;
+            //_port.Close();
+            //Thread.Sleep(1000);
+            try
+            {
+                for (int i=0; i<10; i++)
+                //while()
+                {
+                    if (!_port.IsOpen)
+                    {
+                        _port.Open();
+                        Thread.Sleep(10);
+                    }
+                }
+            }
+            catch (Exception e )
+            {
+                Console.WriteLine("cant open port");
+                return false;
+            }
             UART.ClearBufferTX();
+            return true;
         }
         public static int RecieveMessage()  //записывает в буфер приема 8 принятых по UART байт
         {
             int summ = 0;
-            if (_port.BytesToRead > 0)
+            if (_port.IsOpen)
             {
-                try
+                if (_port.BytesToRead > 0)
                 {
-                    for (int i = 0; i < 8; i++)
+                    try
                     {
-                        preBufferRX[i] = _port.ReadByte();
-                        if (i < 7) summ += preBufferRX[i];
+                        for (int i = 0; i < 8; i++)
+                        {
+                            preBufferRX[i] = _port.ReadByte();
+                            if (i < 7) summ += preBufferRX[i];
+                        }
                     }
+                    catch (System.TimeoutException)
+                    {
+                        return 0;
+                    }
+                    if ((summ & 255) == preBufferRX[7]) for (int i = 0; i < 8; i++) bufferRX[i] = preBufferRX[i];
                 }
-                catch (System.TimeoutException)
-                {
-                    //return;
-                }
-                if ((summ&255) == preBufferRX[7]) for (int i = 0; i < 8; i++) bufferRX[i] = preBufferRX[i];
+                return _port.BytesToRead;
             }
-            return _port.BytesToRead;
+            else return 0;
+            
         }
         public static int GetByteFromBufferRX(int index)    //возвращает принятый байт по индексу
         {
